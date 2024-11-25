@@ -4,10 +4,8 @@ const app = express();
 const proxy = httpProxy.createProxyServer();
 
 const servicios = {
-  usuarios: 'http://localhost:8001',
-  productos: 'http://localhost:8002',
-  carrito: 'http.://localhost:8003',
-  pedidos: 'http://localhost:8004'
+  usuarios: 'http://127.0.0.1:8001',
+  productos: 'http://127.0.0.1:8002'
 };
 
 proxy.on('error', (err, req, res) => {
@@ -16,7 +14,8 @@ proxy.on('error', (err, req, res) => {
 });
 
 Object.keys(servicios).forEach(servicio => {
-  app.use(`/api/${servicio}`, (req, res) => {
+  app.use(`/${servicio}`, (req, res) => {
+    console.log(`Redirigiendo petición a: ${servicios[servicio]}${req.url}`);
     proxy.web(req, res, { target: servicios[servicio] });
   });
 });

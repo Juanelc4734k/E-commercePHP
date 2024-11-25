@@ -3,14 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node gateway.js",
+    "dev": "nodemon gateway.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "gateway",
+    "e-commerce"
+  ],
+  "author": [
+    "Juan Andres Toro",
+    "Mariana Andrea Nisperuza Puerta",
+    "Yenifer Tamayo Villa"
+  ],
+  "license": "MIT",
   "description": "",
   "dependencies": {
     "express": "^4.21.1",
-    "http-proxy": "^1.18.1"
+    "http-proxy": "^1.18.1",
+    "nodemon": "^3.1.7"
   }
 }

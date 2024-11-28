@@ -11,6 +11,23 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
+
+    public function verifyToken(Request $request)
+    {
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => $request->header('Authorization')
+            ])->get(env('USER_SERVICE_URL') . '/api/user');
+
+            if ($response->successful()) {
+                return response()->json($response->json());
+            }
+
+            return response()->json(['error' => 'Token inválido'], 401);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error de autenticación'], 500);
+        }
+    }
     /**
      * Display a listing of the resource.
      */

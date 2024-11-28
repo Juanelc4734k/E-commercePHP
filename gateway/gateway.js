@@ -5,7 +5,8 @@ const proxy = httpProxy.createProxyServer();
 
 const servicios = {
   usuarios: 'http://127.0.0.1:8001',
-  productos: 'http://127.0.0.1:8002'
+  productos: 'http://127.0.0.1:8002',
+  cartpay: 'http://127.0.0.1:8003'
 };
 
 proxy.on('error', (err, req, res) => {

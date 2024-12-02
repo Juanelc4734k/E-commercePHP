@@ -148,7 +148,7 @@ class UserController extends Controller
                 'user' => $user
             ]);
         } catch (\Exception $e) {
-            \Log::error('Error en login: ' . $e->getMessage());
+            Log::error('Error en login: ' . $e->getMessage());
             return response()->json([
                 'message' => 'Error en el inicio de sesión',
                 'error' => $e->getMessage()
